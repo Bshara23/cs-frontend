@@ -9,6 +9,7 @@ import TestPage from './pages/TestPage'
 import ChangePassword from './pages/ChangePassword'
 import E404Page from './pages/E404Page'
 import ForgotPage from './pages/ForgotPage'
+import ActivateAccount from './pages/ActivateAccount'
 
 function App() {
   // const Login = useSelector(ShowLogIn);
@@ -21,6 +22,8 @@ function App() {
           <Switch>
             <Route path="/" exact component={TestPage} />
             <Route path="/ch/:id/:token" exact component={ChangePassword} />
+            <Route path="/a/:id/:token" exact component={ActivateAccount} />
+
             <Route path="/404" exact component={E404Page} />
 
             <Route path="/sign-up" exact component={SignUpPage} />

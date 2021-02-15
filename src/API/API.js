@@ -83,6 +83,28 @@ export const setUserSpare1 = async (id, spare1) => {
   }
 };
 
+
+export const getUserSpare2 = async id => {
+  try {
+    return await axios.get (API_URL + `/spare2/${id}`).then (res => {
+      return res;
+    });
+  } catch (error) {
+    console.error (error);
+  }
+};
+export const setUserSpare2 = async (id, spare2) => {
+  try {
+    return await axios.put (API_URL + `/spare2`, {id, spare2}).then (res => {
+      return res;
+    });
+  } catch (error) {
+    console.error (error);
+  }
+};
+
+
+
 export const setUserSpare1byEmail = async (email, spare1) => {
   try {
     return await axios.put (API_URL + `/spare1email`, {email, spare1}).then (res => {

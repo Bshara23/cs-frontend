@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {Player, Controls} from '@lottiefiles/react-lottie-player';
 import TemporaryAlert from '../components/TemporaryAlert';
-import {doesEmailExists, register} from '../API/API';
+import {doesEmailExists, register, sendMail} from '../API/API';
 var sha256 = require ('js-sha256');
 
 export default function SignUpPage () {
@@ -46,10 +46,26 @@ export default function SignUpPage () {
           sha256 (password),
           promoCode
         ).then (res => {
+
           setAlertType ('success');
           setAlertHeading ('Success');
           setAlertBody ('Registeration has been completed successfully!');
           alertRef.current.showAlert ();
+
+          // send activation mail
+
+          const userId = res.data.id;
+          const token = res.data.spare2;
+
+          const url = `http://localhost:3000/a/${userId}/${token}`;
+          const to = email;
+          const subject = 'Activation Email';
+          const text = `Click on this link to activate your account: ${url}`;
+          const onSuccess = e => {};
+          sendMail (to, subject, text, onSuccess);
+          setAlertType ('success');
+          setAlertHeading ('Success');
+          setAlertBody ('Check your email for an activation link');
         });
       }
     });
@@ -86,7 +102,7 @@ export default function SignUpPage () {
         />
 
         <div className=" d-flex flex-column align-items-md-center">
-        <h3 className="mt-5 mb-5">Sign Up</h3>
+          <h3 className="mt-5 mb-5">Sign Up</h3>
 
           <div className="form-group">
             <input
