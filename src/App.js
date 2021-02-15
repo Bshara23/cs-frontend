@@ -20,7 +20,7 @@ function App() {
       <div className="App">
         <div className="body">
           <Switch>
-            <Route path="/" exact component={TestPage} />
+            <Route path="/" exact component={LogInPage} />
             <Route path="/ch/:id/:token" exact component={ChangePassword} />
             <Route path="/a/:id/:token" exact component={ActivateAccount} />
 
