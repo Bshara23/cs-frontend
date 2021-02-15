@@ -9,7 +9,6 @@ useEffect (() => {
     const onSuccess = e => {
       console.log ('on success', e);
     };
-
     //sendMail (to, subject, text, onSuccess);
   }, []);
 

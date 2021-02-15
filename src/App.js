@@ -8,6 +8,7 @@ import DashboardPage from './pages/DashboardPage'
 import TestPage from './pages/TestPage'
 import ChangePassword from './pages/ChangePassword'
 import E404Page from './pages/E404Page'
+import ForgotPage from './pages/ForgotPage'
 
 function App() {
   // const Login = useSelector(ShowLogIn);
@@ -18,13 +19,13 @@ function App() {
       <div className="App">
         <div className="body">
           <Switch>
-            <Route path="/" exact component={ChangePassword} />
+            <Route path="/" exact component={TestPage} />
             <Route path="/ch/:id/:token" exact component={ChangePassword} />
             <Route path="/404" exact component={E404Page} />
 
             <Route path="/sign-up" exact component={SignUpPage} />
             <Route path="/sign-in" exact component={LogInPage} />
-            {/* <Route path="/reset-password" exact component={CourseForm} /> */}
+            <Route path="/reset-password" exact component={ForgotPage} />
             <Route path="/dashboard" exact component={DashboardPage}/>
             
           </Switch>

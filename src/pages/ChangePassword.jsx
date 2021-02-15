@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import {getUserSpare1, updatePasswordByToken, setUserSpare1} from '../API/API';
 import TemporaryAlert from '../components/TemporaryAlert';
 import {useHistory} from 'react-router-dom';
+var sha256 = require ('js-sha256');
 
 export default function ChangePassword({match}) {
   const alertRef = useRef ();
@@ -45,7 +46,7 @@ export default function ChangePassword({match}) {
       alertRef.current.showAlert ();
       return;
     }
-    updatePasswordByToken (userId, userToken, password).then (res => {
+    updatePasswordByToken (userId, userToken, sha256(password)).then (res => {
       if (res.data == 1) {
         // password changed
         setAlertType ('success');
