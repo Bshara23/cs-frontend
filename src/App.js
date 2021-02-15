@@ -5,7 +5,9 @@ import {useSelector, useDispach} from 'react-redux';
 import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import DashboardPage from './pages/DashboardPage'
-
+import TestPage from './pages/TestPage'
+import ChangePassword from './pages/ChangePassword'
+import E404Page from './pages/E404Page'
 
 function App() {
   // const Login = useSelector(ShowLogIn);
@@ -16,7 +18,10 @@ function App() {
       <div className="App">
         <div className="body">
           <Switch>
-            <Route path="/" exact component={LogInPage} />
+            <Route path="/" exact component={ChangePassword} />
+            <Route path="/ch/:id/:token" exact component={ChangePassword} />
+            <Route path="/404" exact component={E404Page} />
+
             <Route path="/sign-up" exact component={SignUpPage} />
             <Route path="/sign-in" exact component={LogInPage} />
             {/* <Route path="/reset-password" exact component={CourseForm} /> */}
